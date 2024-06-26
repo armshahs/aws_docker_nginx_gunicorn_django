@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  #django_app name is from the nginx file.
+  django_app: 
+    build: . #where the dockerfile is placed, which is currently in the same directory.
+    env_file:
+     - .env
+    volumes:
+      - static_vol:/app/api_1/static
+      - media_vol:/app/api_1/media
+      - sqlite_data:/app/
+    ports:
+      - "8000:8000"
+
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_vol:/app/api_1/static
+      - media_vol:/app/api_1/media
+    ports:
+      - "80:80"
+    depends_on:
+      - django_app
+
+  #adding postgres from Code with Stein
+  # postgres:
+  #   image: postgres:12.2-alpine
+  #   volumes:
+  #     - ./data/db:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+    
+  #   environment:
+  #     - POSTGRES_DB=postgres
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=<PASSWORD>
+
+
+
+volumes:
+  static_vol:
+  media_vol:
+  sqlite_data:
