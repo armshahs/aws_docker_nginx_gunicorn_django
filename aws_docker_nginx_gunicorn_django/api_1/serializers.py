@@ -11,6 +11,12 @@ class CompanySerializer(serializers.ModelSerializer):
             "name",
             "location",
             "description",
+            "description2",
+            "description3",
+            "description4",
+            "description5",
+            "description6",
+            "description7",
             "created_at",
             "updated_at",
         )

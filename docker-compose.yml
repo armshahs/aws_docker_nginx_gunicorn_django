@@ -9,7 +9,7 @@ services:
     volumes:
       - static_vol:/app/api_1/static
       - media_vol:/app/api_1/media
-      - sqlite_data:/app/
+      # - sqlite_data:/app/data
     ports:
       - "8000:8000"
 
@@ -36,9 +36,7 @@ services:
   #     - POSTGRES_USER=postgres
   #     - POSTGRES_PASSWORD=<PASSWORD>
 
-
-
 volumes:
   static_vol:
   media_vol:
-  sqlite_data:
+  # sqlite_data:

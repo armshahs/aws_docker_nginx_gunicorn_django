@@ -25,5 +25,6 @@ RUN pip install -r /app/requirements.txt --no-cache-dir
 
 
 # Run gunicorn as the main process
+# CMD ["sh", "-c", "python manage.py makemigrations && python manage.py migrate && gunicorn src.wsgi:application --bind 0.0.0.0:8000"]
 CMD [ "gunicorn", "src.wsgi:application", "--bind", "0.0.0.0:8000"]
 # CMD [ "python3", "manage.py", "runserver", "0.0.0.0:8000"]
